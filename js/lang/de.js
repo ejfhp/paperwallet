@@ -40,7 +40,7 @@
 		"footerlabelgithub": "GitHub-Repository",
 		"footerlabelgithubzip": "zip",
 		"footerlabelsig": "sig",
-		"footerlabelcopyright1": "Copyright bitaddress.org.",
+		"footerlabelcopyright1": "Derived from bitaddress.org.",
 		"footerlabelcopyright2": "JavaScript-Copyrights sind im Quelltext enthalten.",
 		"footerlabelnowarranty": "Ohne Gew&auml;hr.",
 
