@@ -26,13 +26,16 @@ func (ld *LocalDir) Open(name string) (http.File, error) {
 	fmt.Printf("Open path %s\n", path)
 	f, err := os.Open(path)
 	if err != nil {
+		fmt.Printf("cannot access file: %s", path)
 		return nil, fmt.Errorf("cannot access file: %s", path)
 	}
 	stat, err := f.Stat()
 	if err != nil {
+		fmt.Printf("cannot get stat of file: %s", path)
 		return nil, fmt.Errorf("cannot get stat of file: %s", path)
 	}
 	if stat.IsDir() {
+		fmt.Printf("dir list not allowed: %s", path)
 		return nil, fmt.Errorf("dir list not allowed: %s", path)
 	}
 	return f, nil
