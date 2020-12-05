@@ -15,6 +15,9 @@ type LocalDir struct {
 }
 
 func (ld *LocalDir) Open(name string) (http.File, error) {
+	if name == "" {
+		name = "paperwallet.html"
+	}
 	path := filepath.Join(ld.path, name)
 	f, err := os.Open(path)
 	if err != nil {
