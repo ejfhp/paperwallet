@@ -5,7 +5,7 @@
 		},
 
 		open: function () {
-			if (document.getElementById("btcaddress").innerHTML == "") {
+			if (document.getElementById("bitcoinaddress").innerHTML == "") {
 				single.generateNewAddressAndKey();
 			}
 			document.getElementById("singlearea").style.display = "block";
@@ -22,8 +22,8 @@
 				key.setCompressed(true);
 				var bitcoinAddress = key.getBitcoinAddress();
 				var privateKeyWif = key.getBitcoinWalletImportFormat();
-				document.getElementById("btcaddress").innerHTML = bitcoinAddress;
-				document.getElementById("btcprivwif").innerHTML = privateKeyWif;
+				document.getElementById("bitcoinaddress").innerHTML = bitcoinAddress;
+				document.getElementById("bitcoinprivwif").innerHTML = privateKeyWif;
 				var keyValuePair = {
 					"qrcode_public": bitcoinAddress,
 					"qrcode_private": privateKeyWif
@@ -33,8 +33,8 @@
 			catch (e) {
 				// browser does not have sufficient JavaScript support to generate a bitcoin address
 				alert(e);
-				document.getElementById("btcaddress").innerHTML = "error";
-				document.getElementById("btcprivwif").innerHTML = "error";
+				document.getElementById("bitcoinaddress").innerHTML = "error";
+				document.getElementById("bitcoinprivwif").innerHTML = "error";
 				document.getElementById("qrcode_public").innerHTML = "";
 				document.getElementById("qrcode_private").innerHTML = "";
 			}

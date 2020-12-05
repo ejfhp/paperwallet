@@ -25,13 +25,13 @@ ninja.wallets.brainwallet = {
 			// enforce a minimum passphrase length
 			if (key.length >= ninja.wallets.brainwallet.minPassphraseLength) {
 				var bytes = Crypto.SHA256(key, { asBytes: true });
-				var btcKey = new Bitcoin.ECKey(bytes);
+				var bitcoinKey = new Bitcoin.ECKey(bytes);
 				var isCompressed = document.getElementById("braincompressed").checked;
-				btcKey.setCompressed(isCompressed);
-				var bitcoinAddress = btcKey.getBitcoinAddress();
-				var privWif = btcKey.getBitcoinWalletImportFormat();
-				document.getElementById("brainbtcaddress").innerHTML = bitcoinAddress;
-				document.getElementById("brainbtcprivwif").innerHTML = privWif;
+				bitcoinKey.setCompressed(isCompressed);
+				var bitcoinAddress = bitcoinKey.getBitcoinAddress();
+				var privWif = bitcoinKey.getBitcoinWalletImportFormat();
+				document.getElementById("brainbitcoinaddress").innerHTML = bitcoinAddress;
+				document.getElementById("brainbitcoinprivwif").innerHTML = privWif;
 				ninja.qrCode.showQrCode({
 					"brainqrcodepublic": bitcoinAddress,
 					"brainqrcodeprivate": privWif
