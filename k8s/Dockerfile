@@ -10,7 +10,7 @@ COPY . .
 # Build the command inside the container.
 # (You may fetch or manage dependencies here,
 # either manually or with a tool like "godep".)
-RUN go build -o ppw ./cmd/paperwallet
+RUN CGO_ENABLED=0 GOOS=linux  go build -o paperwallet ./cmd/paperwallet
 
 # Use a Docker multi-stage build to create a lean production image.
 # https://docs.docker.com/develop/develop-images/multistage-build/#use-multi-stage-builds
@@ -18,7 +18,10 @@ FROM alpine:3.12
 RUN apk add --no-cache ca-certificates
 
 # Copy the binary to the production image from the builder stage.
-COPY --from=builder /go/src/github.com/ejfhp/paperwallet/ppw ppw
+RUN mkdir cmd
+COPY --from=builder /go/src/github.com/ejfhp/paperwallet/paperwallet cmd/paperwallet
+COPY  ./img cmd/img
+COPY  ./css cmd/css
 
 # Run the web service on container startup.
-CMD ["/ppw"]
+CMD ["/cmd/paperwallet"]
