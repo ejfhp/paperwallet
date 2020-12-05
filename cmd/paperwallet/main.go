@@ -15,10 +15,15 @@ type LocalDir struct {
 }
 
 func (ld *LocalDir) Open(name string) (http.File, error) {
-	if name == "" {
+	fmt.Printf("Open %s\n", name)
+	switch name {
+	case "/":
 		name = "paperwallet.html"
+	case "/favicon.ico":
+		name = "img/favicon.ico"
 	}
 	path := filepath.Join(ld.path, name)
+	fmt.Printf("Open path %s\n", path)
 	f, err := os.Open(path)
 	if err != nil {
 		return nil, fmt.Errorf("cannot access file: %s", path)
@@ -40,7 +45,7 @@ type PageHandler struct {
 
 func NewPageHandler(prefix, localPath string) *PageHandler {
 	ld := LocalDir{path: localPath}
-	fs := http.StripPrefix(prefix, http.FileServer(&ld))
+	fs := http.FileServer(&ld)
 	return &PageHandler{fileServer: fs}
 }
 
