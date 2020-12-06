@@ -199,6 +199,12 @@
 								id="paperart" onchange="ninja.wallets.paperwallet.toggleArt(this);" /></span>
 						<span><label id="paperlabeladdressestogenerate" for="paperlimit">Addresses to generate:</label>
 							<input type="text" id="paperlimit" /></span>
+						<span><label id="paperstyle" for="art">Art: </label>
+							<select id="art">
+								<option value="iamzatoshi.jpg" selected>iamzatoshi</option>
+								<option value="venere.png">venere</option>
+							</select> 
+						</span>
 						<span><input type="button" id="papergenerate" value="Generate"
 								onclick="ninja.wallets.paperwallet.build(document.getElementById('paperlimit').value * 1, document.getElementById('paperlimitperpage').value * 1, !document.getElementById('paperart').checked, document.getElementById('paperpassphrase').value);" /></span>
 						<span class="print"><input type="button" name="print" value="Print" id="paperprint"

@@ -159,7 +159,8 @@ ninja.wallets.paperwallet = {
 
 	templateArtisticHtml: function (i) {
 		var keyelement = 'bitcoinprivwif';
-		var image = "./img/iamzatoshi.jpeg";
+		var image = "./img/" + document.getElementById("art").value;
+		console.log("selected image: " + image)
 		if (ninja.wallets.paperwallet.encrypt) {
 			keyelement = 'bitcoinencryptedkey'
 		}
