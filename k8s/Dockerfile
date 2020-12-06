@@ -18,12 +18,10 @@ FROM alpine:3.12
 RUN apk add --no-cache ca-certificates
 
 # Copy the binary to the production image from the builder stage.
-RUN mkdir /cmd
-WORKDIR /cmd
+RUN mkdir /paperwallet
+WORKDIR /paperwallet
 COPY --from=builder /go/src/github.com/ejfhp/paperwallet/paperwallet paperwallet
-COPY  ./img img
-COPY  ./css css
-COPY  ./js js
+COPY  ./bitaddress bitaddress
 
 # Run the web service on container startup.
 CMD ["./paperwallet"]

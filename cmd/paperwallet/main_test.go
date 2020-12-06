@@ -21,5 +21,20 @@ func TestPage(t *testing.T) {
 	if rr.Body.String() != "Bitcoin is BSV" {
 		t.Fatalf("wrong body: '%s'\n", rr.Body.String())
 	}
+}
+
+func TestAlias(t *testing.T) {
+	router := httprouter.New()
+	router.GET("/*file", NewPageHandler("/alias", "./testdata").LocalFile)
+	req, _ := http.NewRequest("GET", "/alias/test.txt", nil)
+	rr := httptest.NewRecorder()
+
+	router.ServeHTTP(rr, req)
+	if status := rr.Code; status != http.StatusOK {
+		t.Errorf("Wrong status")
+	}
+	if rr.Body.String() != "Bitcoin is BSV" {
+		t.Fatalf("wrong body: '%s'\n", rr.Body.String())
+	}
 
 }
