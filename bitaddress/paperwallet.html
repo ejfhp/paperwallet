@@ -69,6 +69,14 @@
 	<script type="text/javascript" src="js/bitcoinjs-lib.eckey.js"></script>
 	<script type="text/javascript" src="js/bitcoinjs-lib.util.js"></script>
 	<script type="text/javascript" src="js/crypto-scrypt.js"></script>
+	<!-- Global site tag (gtag.js) - Google Analytics -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=G-BTLVPNXNG0"></script>
+	<script>
+		window.dataLayer = window.dataLayer || [];
+		function gtag() { dataLayer.push(arguments); }
+		gtag('js', new Date());
+		gtag('config', 'G-BTLVPNXNG0');
+	</script>
 </head>
 
 <body onclick="SecureRandom.seedTime();" onmousemove="ninja.seeder.seed(event);">
@@ -102,7 +110,7 @@
 						onclick="ninja.translator.translate('pt-br'); return false;">português</a></span>
 			</div>
 		</div>
-		<img alt="bitaddress.org" title="bitaddress.org" id="logo" src="img/bannerbsv.png"/>
+		<img alt="bitaddress.org" title="bitaddress.org" id="logo" src="img/bannerbsv.png" />
 		<div id="tagline">Open Source JavaScript Client-Side Bitcoin Wallet Generator</div>
 		<div id="seedpoolarea"><textarea rows="16" cols="62" id="seedpool"></textarea></div>
 		<div id="testnet"></div>
@@ -202,8 +210,10 @@
 						<span><label id="paperstyle" for="art">Art: </label>
 							<select id="art">
 								<option value="iamzatoshi.jpg" selected>iamzatoshi</option>
-								<option value="venere.png">venere</option>
-							</select> 
+								<option value="venere.jpg">venere</option>
+								<option value="pegacrick.jpg">pegacrick</option>
+								<option value="christmas.jpg">christmas</option>
+							</select>
 						</span>
 						<span><input type="button" id="papergenerate" value="Generate"
 								onclick="ninja.wallets.paperwallet.build(document.getElementById('paperlimit').value * 1, document.getElementById('paperlimitperpage').value * 1, !document.getElementById('paperart').checked, document.getElementById('paperpassphrase').value);" /></span>
@@ -661,22 +671,25 @@
 						<span class="statusicon" id="statuskeypool" onclick="ninja.status.showKeyPool();">&#8803;</span>
 					</span>
 					<span class="item" id="footerlabeltranslatedby"></span>
-					<span class="item"><a href="https://github.com/ejfhp/paperwallet" target="_blank" id="footerlabelgithub">Current GitHub Repo</a></span>
-					<span class="item"><a href="https://github.com/pointbiz/bitaddress.org" target="_blank" id="footerlabelgithub">Bitaddress Rep</a></span>
+					<span class="item"><a href="https://github.com/ejfhp/paperwallet" target="_blank"
+							id="footerlabelgithub">Current GitHub Repo</a></span>
+					<span class="item"><a href="https://github.com/pointbiz/bitaddress.org" target="_blank"
+							id="footerlabelgithub">Bitaddress Rep</a></span>
 				</div>
 			</div>
 			<div class="authorpgp">
 			</div>
 			<div class="copyright">
 				<span id="footerlabelcopyright1">Derived from bitaddress.org.</span>
-				<span id="footerlabelnowarranty">No warranty.</span>
 			</div>
 		</div>
 	</div>
 
 	<div class="tip">
 		<span class="item">
-			<div class="money-button" data-to="268" data-label="hosting tip" data-amount="0.1" data-currency="EUR" data-client-identifier="2ae33762fc72b32af24a63ef882e96d6"data-button-id="1607178529222" data-type="tip" ></div>
+			<div class="money-button" data-to="268" data-label="hosting tip" data-amount="0.1" data-currency="EUR"
+				data-client-identifier="2ae33762fc72b32af24a63ef882e96d6" data-button-id="1607178529222"
+				data-type="tip"></div>
 		</span>
 	</div>
 	<script type="text/javascript" src="js/ninja.key.js"></script>
