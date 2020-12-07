@@ -32,7 +32,7 @@ input[type=checkbox] { position: relative; z-index: 20; }
 #generate { font-family: monospace; font-size: 1.25em; height: 305px; text-align: left; position: relative; padding: 5px; border: 2px solid #eab300; clear: both; }
 #generate span { padding: 5px 5px 0 5px; }
 #generatekeyinput { position: relative; z-index: 20; }
-#keyarea { height: 250px; }
+#keyarea { height: 430px; }
 #keyarea .pubaddress { float: none; display: block; padding: 0; height: auto; }
 #keyarea .label { text-decoration: none; }
 #keyarea .privwif { float: none; text-align: right; position: relative; padding: 0; }
@@ -51,14 +51,14 @@ input[type=checkbox] { position: relative; z-index: 20; }
 #paperarea { min-height: 120px; display: none; }
 #paperarea .keyarea { border: 2px solid #eab300; border-top: 0; }
 #paperarea .keyarea.art { display: block; height: auto; border: 0; font-family: Ubuntu, Arial; padding: 0; margin: 0; }
-#paperarea .artwallet .papersvg { width: 486px; height: 261px; border: 0; margin: 0; padding: 0; left: 0; }
-#paperarea .artwallet .qrcode_public { top: 52px; left: 17px; z-index: 100; margin: 0; float: none; display: block; position: absolute; background-color: #FFFFFF; 
+#paperarea .artwallet .papersvg { width: 800px; height: 430px; border: 1px solid #000000; margin-top: 5px; margin-bottom: 5px; padding: 2px; left: 0; }
+#paperarea .artwallet .qrcode_public { top: 60px; left: 25px; z-index: 100; margin: 0; float: none; display: block; position: absolute; background-color: #FFFFFF; 
 		                                padding: 5px 5px 2px 5px; } 
-#paperarea .artwallet .qrcode_private { top: 104px; left: 360px; z-index: 100; margin: 0; float: none; display: block; position: absolute; background-color: #FFFFFF; 
+#paperarea .artwallet .qrcode_private { top: 120px; right: 25px; z-index: 100; margin: 0; float: none; display: block; position: absolute; background-color: #FFFFFF; 
 		                                padding: 5px 5px 2px 5px; }
 #paperarea .artwallet .bitcoinaddress  
 {
-	position: absolute; top: 240px; left: 139px; z-index: 100; font-size: 10px; background-color: transparent;
+	position: absolute; bottom: 40px; left: 240px; z-index: 100; font-size: 11px; background-color: transparent;
 	font-weight:bold; color: #000000; margin: 0;
 		-webkit-transform-origin:top left; -webkit-transform:rotate(-90deg);
 		-moz-transform-origin:top left;    -moz-transform:rotate(-90deg);
@@ -68,7 +68,7 @@ input[type=checkbox] { position: relative; z-index: 20; }
 } 
 #paperarea .artwallet .bitcoinprivwif  
 {
-	position: absolute; top: 236px; left: 346px; z-index: 100; font-size: 7px; background-color: transparent;
+	position: absolute; bottom: 40px; left: 550px; z-index: 100; font-size: 11px; background-color: transparent;
 	font-weight:bold; color: #000000; margin: 0;  
 		-webkit-transform-origin:top left; -webkit-transform:rotate(-90deg);
 		-moz-transform-origin:top left;    -moz-transform:rotate(-90deg);
@@ -224,6 +224,7 @@ input[type=checkbox] { position: relative; z-index: 20; }
 	#paperarea .keyarea.art:first-child { border: 0; }
 	.pagebreak { height: 1px; }
 	.paper #logo { display: none; }
+	.papersvg {border: #000000;}
 	.menu, .footer, .commands, .tip, #tagline, #faqs, #culturemenu { display: none; }
 	#detailprivwif { width: 285px; word-wrap: break-word; }
 	#detailprivwifcomp { width: 310px; word-wrap: break-word; text-align: right; }

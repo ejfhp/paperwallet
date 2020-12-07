@@ -180,7 +180,8 @@ ninja.wallets.paperwallet = {
 		var keyValuePair = {};
 		keyValuePair["qrcode_public" + idPostFix] = bitcoinAddress;
 		keyValuePair["qrcode_private" + idPostFix] = privateKey;
-		ninja.qrCode.showQrCode(keyValuePair, 2.5);
+		// ninja.qrCode.showQrCode(keyValuePair, 2.5);
+		ninja.qrCode.showQrCode(keyValuePair, 4.5);
 		document.getElementById("bitcoinaddress" + idPostFix).innerHTML = bitcoinAddress;
 
 		if (ninja.wallets.paperwallet.encrypt) {
