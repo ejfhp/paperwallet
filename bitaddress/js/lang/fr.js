@@ -7,7 +7,7 @@
 		"paperlabelencryptedkey": "Encrypted Private Key (Password required)", //TODO: please translate
 		"bulkgeneratingaddresses": "Création de l'adresse... ",
 		"brainalertpassphrasetooshort": "Le mot de passe que vous avez entré est trop court.\n\n",
-		"brainalertpassphrasewarning": "Attention: Choisir un mot de passe solide est important pour vous protéger des attaques bruteforce visant à trouver votre mot de passe et voler vos Bitcoins.",
+		"brainalertpassphrasewarning": "Brainwallet est très risqué, si votre phrase de passe n'est pas super complexe / longue / unique, il est très probable qu'elle soit devinée par des robots de force brute et votre bitcoin sera volé. Faites attention!",
 		"brainalertpassphrasedoesnotmatch": "Le mot de passe ne correspond pas au mot de passe de vérification.",
 		"detailalertnotvalidprivatekey": "Le texte que vous avez entré n'est pas une Clé Privée valide",
 		"detailconfirmsha256": "Le texte que vous avez entré n'est pas une Clé Privée valide!\n\nVoulez-vous utiliser le texte comme un mot de passe et créer une Clé Privée à partir d'un hash SHA256 de ce mot de passe?\n\nAttention: Choisir un mot de passe solide est important pour vous protéger des attaques bruteforce visant à trouver votre mot de passe et voler vos Bitcoins.",
@@ -33,16 +33,8 @@
 		"detailwallet": "Détails du Porte-Monnaie",
 
 		// footer html
-		"footerlabeldonations": "Dons:",
-		"footerlabeltranslatedby": "Traduction: 1Gy7NYSJNUYqUdXTBow5d7bCUEJkUFDFSq",
-		"footerlabelpgp": "PGP",
-		"footerlabelversion": "Historique De Version",
-		"footerlabelgithub": "Dépôt GitHub",
 		"footerlabelgithubzip": "zip",
-		"footerlabelsig": "sig",
-		"footerlabelcopyright1": "Derived from bitaddress.org.",
-		"footerlabelcopyright2": "Les droits d'auteurs JavaScript sont inclus dans le code source.",
-		"footerlabelnowarranty": "Aucune garantie.",
+		"footerlabelcopyright1": "Pour obtenir tous les droits d'auteur, consultez GitHub Repository. À utiliser à vos risques et périls.",
 
 		// status html
 		"statuslabelcryptogood": "&#10004; Good!", //TODO: please translate
@@ -74,11 +66,7 @@
 		"singleprint": "Imprimer",
 		"singlelabelbitcoinaddress": "Adresse Bitcoin:",
 		"singlelabelprivatekey": "Clé Privée (Format d'importation de porte-monnaie):",
-		"singletip1": "Un porte-monnaie Bitcoin est aussi simple qu'une paire d'adresses Bitcoin dont une correspond à l'adresse privée Bitcoin. Ce porte-monnaie affiché a été généré pour vous dans votre propre navigateur internet et est donc affiché ci-dessus.",
-		"singletip2": "Pour garder en sécurité ce porte-monnaie, vous devez l'imprimer ou, alternativement, enregistrer l'adresse de réception Bitcoin et la clé privée. Il est important de créer une copie de sauvegarde de la clé privée et de la stocker à un endroit sûr. Ce site n'a aucune base prédéterminée ou de sauvegarde de votre clé privée. Si vous êtes initiés à PGP, vous pouvez télécharger la version toute-en-1 de la page HTML et ainsi vérifier que vous avez une version authentique issue de l'auteur du site en comparant l'encryptage SHA1 de votre page HTML sauvegardée avec l'encryptage SHA1 disponible sur l'historique certifiée indiquée en bas de ce site. Si vous quittez ou rafraichissez ce site ou que vous appuyez sur \"générer une nouvelle adresse\" ... alors une nouvelle clé privée sera générée et la précédente clé privée affichée ne pourra plus être retrouvée. Votre clé privée Bitcoin doit être gardée secrète. Celui qui connaît la clé privée aura la possibilité de vider tous les bitcoins accumulés et associés à l'adresse de réception. Si vous imprimez le porte-monnaie, pensez à le mettre à l'abri de l'eau dans un sac étanche. Traitez le porte-monnaie papier comme de l'argent en espèces et billets.",
-		"singletip3": "Pour ajouter des fonds à votre porte-monnaie, indiquez d'envoyer les Bitcoins à votre adresse de réception.",
-		"singletip4": "Vérifier le contenu de votre porte-monnaie en consultant blockchain.info ou blockexplorer.com et en y tapant votre adresse de réception Bitcoin.",
-		"singletip5": "Pour dépenser vos bitcoins, allez sur blockchain.info et transférez l'ensemble des fonds de votre adresse privée vers le compte de ce site. Vous pouvez, aussi, dépenser vos fonds en téléchargeant un des programmes P2P bitcoin populaires et en y important votre clé privée dans un porte-monnaie P2P. Gardez à l'esprit que quand vous importez votre clé privée dans le programme P2P bitcoin et que vous dépensez vos fonds, votre clé privée sera intégrée avec d'autres clés privées dans le porte-monnaie P2P. Quand vous effectuez une transaction, le changement sera envoyé sur une autre adresse bitcoin privée à l'intérieur du porte-monnaie P2P. Vous DEVEZ, alors, faire une sauvegarde du porte-monnaie P2P et le garder en sécurité car l'ensemble des bitcoins restant y sera stocké. Satoshi a averti qu'il ne faudrait jamais supprimer un porte-monnaie.",
+		"singletip": "<b>Un porte-monnaie Bitcoin</b> est aussi simple qu'une paire d'adresses Bitcoin dont une correspond à l'adresse privée Bitcoin. Ce porte-monnaie affiché a été généré pour vous dans votre propre navigateur internet et est donc affiché ci-dessus.",
 		"singleshare": "PARTAGER",
 		"singlesecret": "SECRET",
 
@@ -146,7 +134,7 @@
 		"detailview": "Voir les détails",
 		"detailprint": "Imprimer",
 		"detaillabelnote1": "Votre Clé Privée Bitcoin est un nombre secret que vous êtes le seul à connaître. Il peut être encodé sous la forme d'un nombre sous différents formats. Ci-bas, nous affichons l'adresse Bitcoin et la Clé Publique qui corresponds à la Clé Privée ainsi que la Clé Privée dans les formats d'encodage les plus populaires (WIF, WIFC, HEX, B64).",
-		"detaillabelnote2": "Bitcoin v0.6+ conserve les clés publiques dans un format compressé. Le logiciel supporte maintenant aussi l'importation et l'exportation de clés privées avec importprivkey/dumpprivkey. Le format de la clé privée exportée est déterminé selon la version du porte-monnaie Bitcoin.",
+		"detaillabelnote2": "Bitcoin conserve les clés publiques dans un format compressé. Le logiciel supporte maintenant aussi l'importation et l'exportation de clés privées avec importprivkey/dumpprivkey. Le format de la clé privée exportée est déterminé selon la version du porte-monnaie Bitcoin.",
 		"detaillabelbitcoinaddress": "Adresse Bitcoin:",
 		"detaillabelbitcoinaddresscomp": "Adresse Bitcoin (compressée):",
 		"detaillabelpublickey": "Clé Publique (130 caractères [0-9A-F]):",

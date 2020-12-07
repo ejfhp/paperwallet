@@ -6,7 +6,7 @@ ninja.wallets.brainwallet = {
 	open: function () {
 		document.getElementById("brainarea").style.display = "block";
 		document.getElementById("brainpassphrase").focus();
-		document.getElementById("brainwarning").innerHTML = ninja.translator.get("brainalertpassphrasewarning");
+		// document.getElementById("brainwarning").innerHTML = ninja.translator.get("brainalertpassphrasewarning");
 	},
 
 	close: function () {

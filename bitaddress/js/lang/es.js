@@ -7,7 +7,7 @@
 		"paperlabelencryptedkey": "Clave privada cifrada (contraseña necesaria)",
 		"bulkgeneratingaddresses": "Generación de direcciones... ",
 		"brainalertpassphrasetooshort": "La contraseña introducida es demasiado corta.\n\n",
-		"brainalertpassphrasewarning": "Aviso: Es importante escoger una contraseña fuerte para evitar ataques de fuerza bruta a fin de adivinarla y robar tus bitcoins.",
+		"brainalertpassphrasewarning": "Brainwallet es muy arriesgado, si su frase de contraseña no es súper compleja / larga / única, es muy probable que los robots de fuerza bruta adivinen que su bitcoin será robado. ¡Ten cuidado!",
 		"brainalertpassphrasedoesnotmatch": "Las contraseñas no coinciden.",
 		"detailalertnotvalidprivatekey": "El texto que has introducido no es una clave privada válida",
 		"detailconfirmsha256": "El texto que has introducido no es una clave privada válida\n\n¿Quieres usar ese texto como si fuera una contraseña y generar una clave privada usando un hash SHA256 de tal contraseña?\n\nAviso: Es importante escoger una contraseña fuerte para evitar ataques de fuerza bruta a fin de adivinarla y robar tus bitcoins.",
@@ -33,16 +33,8 @@
 		"detailwallet": "Detalles de la cartera",
 
 		// footer html
-		"footerlabeldonations": "Donaciones:",
-		"footerlabeltranslatedby": "Traducción: <b>12345</b>Vypv2QSmuRXcciT5oEB27mPbWGeva",
-		"footerlabelpgp": "PGP",
-		"footerlabelversion": "Histórico de versiones",
-		"footerlabelgithub": "Repositorio GitHub",
 		"footerlabelgithubzip": "zip",
-		"footerlabelsig": "sig",
-		"footerlabelcopyright1": "Derived from bitaddress.org.",
-		"footerlabelcopyright2": "Copyright del código JavaScript: en el fuente.",
-		"footerlabelnowarranty": "Sin garantía.",
+		"footerlabelcopyright": "Para ver los derechos de autor completos, consulte GitHub Repository. Úselo bajo su propio riesgo.",
 
 		// status html
 		"statuslabelcryptogood": "&#10004; Good!", //TODO: please translate
@@ -74,11 +66,7 @@
 		"singleprint": "Imprimir",
 		"singlelabelbitcoinaddress": "Dirección Bitcoin",
 		"singlelabelprivatekey": "Clave privada (formato para importar):",
-		"singletip1": "<b>A Bitcoin wallet</b> is as simple as a single pairing of a Bitcoin address with it's corresponding Bitcoin private key. Such a wallet has been generated for you in your web browser and is displayed above.", //TODO: please translate
-		"singletip2": "<b>To safeguard this wallet</b> you must print or otherwise record the Bitcoin address and private key. It is important to make a backup copy of the private key and store it in a safe location. This site does not have knowledge of your private key. If you are familiar with PGP you can download this all-in-one HTML page and check that you have an authentic version from the author of this site by matching the SHA256 hash of this HTML with the SHA256 hash available in the signed version history document linked on the footer of this site. If you leave/refresh the site or press the Generate New Address button then a new private key will be generated and the previously displayed private key will not be retrievable.	Your Bitcoin private key should be kept a secret. Whomever you share the private key with has access to spend all the bitcoins associated with that address. If you print your wallet then store it in a zip lock bag to keep it safe from water. Treat a paper wallet like cash.", //TODO: please translate
-		"singletip3": "<b>Add funds</b> to this wallet by instructing others to send bitcoins to your Bitcoin address.", //TODO: please translate
-		"singletip4": "<b>Check your balance</b> by going to blockchain.info or blockexplorer.com and entering your Bitcoin address.", //TODO: please translate
-		"singletip5": "<b>Spend your bitcoins</b> by going to blockchain.info and sweep the full balance of your private key into your account at their website. You can also spend your funds by downloading one of the popular bitcoin p2p clients and importing your private key to the p2p client wallet. Keep in mind when you import your single key to a bitcoin p2p client and spend funds your key will be bundled with other private keys in the p2p client wallet. When you perform a transaction your change will be sent to another bitcoin address within the p2p client wallet. You must then backup the p2p client wallet and keep it safe as your remaining bitcoins will be stored there. Satoshi advised that one should never delete a wallet.", //TODO: please translate
+		"singletip": "<b>A Bitcoin wallet</b> is as simple as a single pairing of a Bitcoin address with it's corresponding Bitcoin private key. Such a wallet has been generated for you in your web browser and is displayed above.", //TODO: please translate
 		"singleshare": "SHARE", //TODO: please translate
 		"singlesecret": "SECRET", //TODO: please translate
 
@@ -146,7 +134,7 @@
 		"detailview": "Ver detalles",
 		"detailprint": "Imprimir",
 		"detaillabelnote1": "Tu clave privada es un número secreto, único, que sólo tú conoces. Se puede expresar en varios formatos. Aquí abajo mostramos la dirección y la clave pública que se corresponden con tu clave privada, así como la clave privada en los formatos más conocidos (para importar, hex, base64 y mini).",
-		"detaillabelnote2": "Bitcoin v0.6+ almacena las claves públicas comprimidas. El cliente también soporta importar/exportar claves privadas usando importprivkey/dumpprivkey. El formato de las claves privadas exportadas depende de si la dirección se generó en una cartera antigua o nueva.",
+		"detaillabelnote2": "Bitcoin almacena las claves públicas comprimidas. El cliente también soporta importar/exportar claves privadas usando importprivkey/dumpprivkey. El formato de las claves privadas exportadas depende de si la dirección se generó en una cartera antigua o nueva.",
 		"detaillabelbitcoinaddress": "Dirección Bitcoin:",
 		"detaillabelbitcoinaddresscomp": "Dirección Bitcoin (comprimida):",
 		"detaillabelpublickey": "Clave pública (130 caracteres [0-9A-F]):",

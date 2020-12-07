@@ -188,7 +188,7 @@ input[type=checkbox] { position: relative; z-index: 20; }
 	#brainpassphraseconfirm { width: 280px; position: relative; z-index: 20; }
     #brainpassphraseshow { position: relative; z-index: 20; }
     #brainview { position: relative; z-index: 20; }
-	#brainwarning {  }
+	#brainalertpassphrasewarning {color: #ff0000;  }
 	#detailcommands { padding: 10px 0; }
 	#detailcommands span { padding: 0 10px; }
 	#detailprivkey { width: 460px; position: relative; z-index: 20; }
@@ -224,7 +224,7 @@ input[type=checkbox] { position: relative; z-index: 20; }
 	#paperarea .keyarea.art:first-child { border: 0; }
 	.pagebreak { height: 1px; }
 	.paper #logo { display: none; }
-	.menu, .footer, .commands, #tagline, #faqs, #culturemenu { display: none; }
+	.menu, .footer, .commands, .tip, #tagline, #faqs, #culturemenu { display: none; }
 	#detailprivwif { width: 285px; word-wrap: break-word; }
 	#detailprivwifcomp { width: 310px; word-wrap: break-word; text-align: right; }
 	#detailarea .privqr .item.right { width: 310px; }
@@ -248,5 +248,5 @@ a:link, a:visited {
   }
 
 .tip {
-	text-align: center;
+	text-align: left;
 }

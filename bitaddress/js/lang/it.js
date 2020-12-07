@@ -7,7 +7,7 @@
 		"paperlabelencryptedkey": "Chiave privata criptata (password richiesta)",
 		"bulkgeneratingaddresses": "Generazione indirizzi... ",
 		"brainalertpassphrasetooshort": "La passphrase inserita è troppo corta.\n\n",
-		"brainalertpassphrasewarning": "Attenzione: La scelta di una passphrase robusta è importante per evitare attacchi brute force in grado di indovinare la tua passphrase e rubare i tuoi Bitcoin",
+		"brainalertpassphrasewarning": "Il brainwallet è molto rischioso, se la tua passphrase non è super complessa / lunga / unica è molto probabile che venga indovinata da brute-force bot e che i tuoi bitcoin vengano rubati. Stai attento!",
 		"brainalertpassphrasedoesnotmatch": "La passphrase non combacia con quella data per la conferma.",
 		"detailalertnotvalidprivatekey": "Il testo inserito non rappresenta una Chiave Privata valida",
 		"detailconfirmsha256": "Il testo inserito non rappresenta una Chiave privata valida!\n\nVorresti usare il testo inserito come passphrase e creare da questa un hash SHA256 e generare così una Chiave Privata?\n\nAvvertenza: La scelta di una passphrase robusta è importante per evitare che attacchi di tipo \"brute force\" vadano a segno indovinando il testo segreto e di conseguenza far perdere i Bitcoin.",
@@ -33,16 +33,8 @@
 		"detailwallet": "Dettagli portafoglio",
 
 		// footer html
-		"footerlabeldonations": "Donazioni:",
-		"footerlabeltranslatedby": "",
-		"footerlabelpgp": "PGP",
-		"footerlabelversion": "Cronologia Versioni",
-		"footerlabelgithub": "Repository GitHub",
 		"footerlabelgithubzip": "zip",
-		"footerlabelsig": "sig",
-		"footerlabelcopyright1": "Derived from bitaddress.org.",
-		"footerlabelcopyright2": "Le note di copyright dei file JavaScript sono inclusi nei sorgenti stessi.",
-		"footerlabelnowarranty": "Nessuna garanzia.",
+		"footerlabelcopyright1": "Per il copyright completo vedere GitHub Repository. Utilizzare a proprio rischio e pericolo.",
 
 		// status html
 		"statuslabelcryptogood": "&#10004; Good!", //TODO: please translate
@@ -74,11 +66,7 @@
 		"singleprint": "Stampa",
 		"singlelabelbitcoinaddress": "Indirizzo Bitcoin:",
 		"singlelabelprivatekey": "Chiave privata (Wallet Import Format):",
-		"singletip1": "<b>Un portafogli bitcoin</b> è composto semplicemente da una coppia di valori: l'indirizzo e la sua chiave privata. Un portafogli è stato appena generato sul tuo browser e mostrato sopra.",
-		"singletip2": "<b>Per mettere in sicurezza questo portafogli</b> devi stampare o quantomeno salvare l'indirizzo bitcoin e la Chiave privata. È molto importante fare una copia di backup della chiave privata e conservarla in un posto sicuro. Questo sito non conosce la tua chiave privata. Se hai familiarità con PGP, puoi scaricare per intero questa pagina HTML e controllare la sua autentiticità. Puoi confrontare il codice SHA256 della pagina scaricata con il codice firmato dall'autore che trovi nella cronologia delle versioni (in fondo alla pagina). Se abbandoni/aggiorni la pagina web oppure premi il tasto Genera, un nuovo indirizzo sostituirà quello vecchio che non potrà più essere recuperato. La chiave privata dovrebbe essere tenuta segreta, chiunque conosca la chiave privata può avere accesso e spendere i tuoi bitcoin. Se stampi il tuo portafogli conservalo in una busta di plastica sigillata per tenerla al riparo dall'acqua. Tratta quanto stampato alla stregua di una banconota.",
-		"singletip3": "<b>Ricevi fondi</b> su questo portafogli mostrando l'indirizzo bitcoin per il versamento.",
-		"singletip4": "<b>Controlla il saldo</b> visitando blockchain.info o blockexplorer.com cercando il tuo indirizzo bitcoin.",
-		"singletip5": "<b>Spendi i tuoi bitcoin</b> aprendo un account su blockchain.info usando la chiave privata. Puoi anche spendere i tuoi bitcoin scaricando il popolare client p2p ed importando in esso il portafogli. Tieni presente che quando importi una chiave nel client p2p, nel momento in cui spendi le monete, la chiave viene raggruppata insieme alle altre presenti nel programma con i restanti bitcoin. Quando esegui una transazione gli spiccioli verranno invitati verso un altro indirizzo all'interno del tuo portafogli gestito dal client p2p. Quindi dovresti tenere un backup del portafogli contenuto nel client p2p e tenere questo in un posto sicuro fin tanto terrai dei bitcoin lì. Satoshi consiglia di non cancellare mai un portafogli. ",
+		"singletip": "<b>Un portafogli bitcoin</b> è composto semplicemente da una coppia di valori: l'indirizzo e la sua chiave privata. Un portafogli è stato appena generato sul tuo browser e mostrato sopra.",
 		"singleshare": "SHARE", //TODO: please translate
 		"singlesecret": "SECRET", //TODO: please translate
 
@@ -146,7 +134,7 @@
 		"detailview": "Mostra Dettagli",
 		"detailprint": "Stampa",
 		"detaillabelnote1": "La tua Chiave privata Bitcoin è rappresentata da un numero segreto, unico al mondo, che dovresti conoscere soltanto tu. Può essere codificato in molti formati differenti. Di seguito verrà mostrato l'indirizzo Bitcoin e la chiave pubblica, con la corrispondente chiave privata, nei più diffusi formati di codifica (WIF, WIFC, HEX, B64).",
-		"detaillabelnote2": "Il client Bitcoin, dalla versione v0.6, memorizza le chiavi pubbliche in formato compresso. Il programma ora supporta l'importazione e l'esportazione delle chiavi private attraverso importprivkey/dumpprivkey. Il formato con cui viene esportata la chiave privata dipende se l'indirizzo generato è stato creato con il nuovo o vecchio portafogli.",
+		"detaillabelnote2": "Il client Bitcoin memorizza le chiavi pubbliche in formato compresso. Il programma ora supporta l'importazione e l'esportazione delle chiavi private attraverso importprivkey/dumpprivkey. Il formato con cui viene esportata la chiave privata dipende se l'indirizzo generato è stato creato con il nuovo o vecchio portafogli.",
 		"detaillabelbitcoinaddress": "Indirizzo Bitcoin",
 		"detaillabelbitcoinaddresscomp": "Indirizzo Bitcoin compresso",
 		"detaillabelpublickey": "Chiave pubblica (130 caratteri [0-9A-F]):",
