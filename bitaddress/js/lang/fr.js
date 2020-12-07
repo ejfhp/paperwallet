@@ -34,7 +34,7 @@
 
 		// footer html
 		"footerlabelgithubzip": "zip",
-		"footerlabelcopyright1": "Pour obtenir tous les droits d'auteur, consultez GitHub Repository. À utiliser à vos risques et périls.",
+		"footerlabelcopyright": "Pour obtenir tous les droits d'auteur, consultez GitHub Repository. À utiliser à vos risques et périls.",
 
 		// status html
 		"statuslabelcryptogood": "&#10004; Good!", //TODO: please translate

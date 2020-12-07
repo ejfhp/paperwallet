@@ -5,7 +5,7 @@
 		"paperlabelbitcoinaddress": "Indirizzo Bitcoin:",
 		"paperlabelprivatekey": "Chiave privata:",
 		"paperlabelencryptedkey": "Chiave privata criptata (password richiesta)",
-		"bulkgeneratingaddresses": "Generazione indirizzi... ",
+		"bulkgeneratingaddresses": "Generazione indirizzi in corso... ",
 		"brainalertpassphrasetooshort": "La passphrase inserita è troppo corta.\n\n",
 		"brainalertpassphrasewarning": "Il brainwallet è molto rischioso, se la tua passphrase non è super complessa / lunga / unica è molto probabile che venga indovinata da brute-force bot e che i tuoi bitcoin vengano rubati. Stai attento!",
 		"brainalertpassphrasedoesnotmatch": "La passphrase non combacia con quella data per la conferma.",
@@ -21,20 +21,19 @@
 
 		// header and menu html
 		"tagline": "Open Source JavaScript Client-Side Bitcoin Wallet Generator",
-		"generatelabelbitcoinaddress": "Generazione Indirizzo Bitcoin...",
-		"generatelabelmovemouse": "MUOVI il tuo mouse per contribuire alla generazione dei numeri casuali...",
-		"generatelabelkeypress": "OR type some random characters into this textbox", //TODO: please translate
-		"singlewallet": "Singolo portafoglio",
+		"generatelabelbitcoinaddress": "Generazione indirizzo in corso...",
+		"generatelabelmovemouse": "Muovi il tuo mouse per creare aleatorietà (randomness)...",
+		"generatelabelkeypress": "o scrivi caratteri a caso:", //TODO: please translate
+		"singlewallet": "Singolo indirizzo",
 		"paperwallet": "Paper Wallet",
-		"bulkwallet": "Portafogli multipli",
+		"bulkwallet": "Indirizzi multipli",
 		"brainwallet": "Brain Wallet",
 		"vanitywallet": "Vanity Wallet",
-		"splitwallet": "Split Wallet", //TODO: please translate
-		"detailwallet": "Dettagli portafoglio",
+		"detailwallet": "Dettagli indirizzo",
 
 		// footer html
 		"footerlabelgithubzip": "zip",
-		"footerlabelcopyright1": "Per il copyright completo vedere GitHub Repository. Utilizzare a proprio rischio e pericolo.",
+		"footerlabelcopyright": "Per il copyright completo vedere GitHub Repository. Utilizzare a proprio rischio e pericolo.",
 
 		// status html
 		"statuslabelcryptogood": "&#10004; Good!", //TODO: please translate
