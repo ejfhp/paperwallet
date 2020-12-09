@@ -104,7 +104,7 @@
 </head>
 
 <!-- <body onclick="SecureRandom.seedTime();" onmousemove="ninja.seeder.seed(event);"> -->
-<body onload="ninja.seeder.seedingOver()">
+<body onload="ninja.wallets.paperwallet.open()">
 	<div id="busyblock"></div>
 	<div id="main">
 		<div id="culturemenu">
@@ -125,25 +125,13 @@
 		<div id="tagline">Open Source JavaScript Client-Side Bitcoin Wallet Generator</div>
 		<div id="seedpoolarea"><textarea rows="16" cols="62" id="seedpool"></textarea></div>
 		<div id="testnet"></div>
-		<ul class="menu" id="menu">
-			<li id="gallery" onclick="ninja.tab.select(this);">Template Gallery
-			<li class="tab" id="paperwallet" onclick="ninja.tab.select(this);">Paper Wallet
-		</ul>
 
 		<!-- RANDOMNESS GENERATION -->
-		<div id="generate">
-			<span id="generatelabelbitcoinaddress">Generating Bitcoin Address...</span><br />
-			<span id="generatelabelmovemouse">MOVE your mouse around to add some extra randomness... </span><span
-				id="mousemovelimit"></span><br />
-			<span id="generatelabelkeypress">OR type some random characters into this textbox</span> <input type="text"
-				id="generatekeyinput" onkeydown="ninja.seeder.seedKeyPress(event);" /><br />
-			<div id="seedpooldisplay"></div>
-		</div>
 
 		<!-- WALLETS MENU -->
 		<div id="wallets">
 			<!-- WALLET GALLERY -->
-			<div id="gallery" class="gelleryarea">
+			<!-- <div id="gallery" class="gelleryarea">
 				<div id="presentation" class="presentation">
 					<div class="row">
 						<p>With a paperwallet it is possible to put Bitcoin on paper.</p>
@@ -162,7 +150,7 @@
 						<p id="singletip">NOw it's time to create your own wallet</p>
 					</div>
 				</div>
-			</div>
+			</div> -->
 
 			<!-- PAPER WALLET -->
 			<div id="paperarea">
@@ -305,7 +293,6 @@
 	</div>
 
 	<script type="text/javascript" src="js/ninja.key.js"></script>
-	<script type="text/javascript" src="js/ninja.seeder.js"></script>
 	<script type="text/javascript" src="js/ninja.qrcode.js"></script>
 	<script type="text/javascript" src="js/ninja.misc.js"></script>
 	<script type="text/javascript" src="js/ninja.translator.js"></script>
@@ -320,13 +307,12 @@
 	<!-- <script type="text/javascript" src="js/lang/pt-br.js"></script> -->
 	<!-- <script type="text/javascript" src="js/lang/ru.js"></script> -->
 	<!-- <script type="text/javascript" src="js/lang/zh-cn.js"></script> -->
-	<script type="text/javascript" src="js/ninja.singlewallet.js"></script>
 	<script type="text/javascript" src="js/ninja.paperwallet.js"></script>
 	<!-- <script type="text/javascript" src="js/ninja.bulkwallet.js"></script> -->
 	<!-- <script type="text/javascript" src="js/ninja.vanitywallet.js"></script> -->
 	<!-- <script type="text/javascript" src="js/ninja.splitwallet.js"></script> -->
-	<script type="text/javascript" src="js/ninja.unittests.js"></script>
-	<script type="text/javascript" src="js/ninja.onload.js"></script>
+	<!-- <script type="text/javascript" src="js/ninja.unittests.js"></script> -->
+	<!-- <script type="text/javascript" src="js/ninja.onload.js"></script> -->
 	<script src="https://www.moneybutton.com/moneybutton.js"></script>
 </body>
 

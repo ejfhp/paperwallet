@@ -61,7 +61,7 @@
 	}();
 })(ninja);
 
-ninja.tab = {
+// ninja.tab = {
 //     select: function (walletTab) {
 //         // detect type: normally an HtmlElement/object but when string then get the element
 //         if (typeof walletTab === 'string') {
