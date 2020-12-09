@@ -103,7 +103,8 @@
 	</script>
 </head>
 
-<body onclick="SecureRandom.seedTime();" onmousemove="ninja.seeder.seed(event);">
+<!-- <body onclick="SecureRandom.seedTime();" onmousemove="ninja.seeder.seed(event);"> -->
+<body onload="ninja.seeder.seedingOver()">
 	<div id="busyblock"></div>
 	<div id="main">
 		<div id="culturemenu">
@@ -125,10 +126,8 @@
 		<div id="seedpoolarea"><textarea rows="16" cols="62" id="seedpool"></textarea></div>
 		<div id="testnet"></div>
 		<ul class="menu" id="menu">
-			<li class="tab" id="singlewallet" onclick="ninja.tab.select(this);">Single Wallet
+			<li class="tab" id="gallery" onclick="ninja.tab.select(this);">Template Gallery
 			<li class="tab" id="paperwallet" onclick="ninja.tab.select(this);">Paper Wallet
-			<li class="tab" id="brainwallet" onclick="ninja.tab.select(this);">Brain Wallet
-			<li class="tab" id="detailwallet" onclick="ninja.tab.select(this);">Wallet Details
 		</ul>
 
 		<!-- RANDOMNESS GENERATION -->
@@ -144,43 +143,23 @@
 		<!-- WALLETS MENU -->
 		<div id="wallets">
 			<!-- SINGLE WALLET -->
-			<div id="singlearea" class="walletarea">
-				<div class="commands">
-					<div id="singlecommands" class="row">
-						<span><input type="button" id="newaddress" value="Generate New Address"
-								onclick="ninja.wallets.singlewallet.generateNewAddressAndKey();" /></span>
-						<span class="print"><input type="button" name="print" value="Print" id="singleprint"
-								onclick="window.print();" /></span>
+			<div id="gallery" class="gelleryarea">
+				<div id="presentation" class="presentation">
+					<div class="row">
+						<p>With a paperwallet it is possible to put Bitcoin on paper.</p>
 					</div>
 				</div>
-				<div class="body">
-					<div id="keyarea" class="keyarea">
-						<div class="public">
-							<div class="pubaddress">
-								<span class="label" id="singlelabelbitcoinaddress">Bitcoin Address</span>
-							</div>
-							<div id="qrcode_public" class="qrcode_public"></div>
-							<div class="pubaddress">
-								<span class="output" id="bitcoinaddress"></span>
-							</div>
-							<div id="singleshare">SHARE</div>
-						</div>
-						<div class="private">
-							<div class="privwif">
-								<span class="label" id="singlelabelprivatekey">Private Key</span>
-							</div>
-							<div id="qrcode_private" class="qrcode_private"></div>
-							<div class="privwif">
-								<span class="output" id="bitcoinprivwif"></span>
-							</div>
-							<div id="singlesecret">SECRET</div>
-						</div>
+				<div class="list">
+					<div class="template">
+					<div class="templateimg">
+						<img src="img/art_bitcoin.jpg"/>
 					</div>
-
+					<div class="templatetext">
+						<p>Bitcoin</p>
+					</div>
+					</div>
 					<div id="singlesafety">
-						<p id="singletip"><b>A Bitcoin wallet</b> is as simple as a single pairing of a Bitcoin address
-							with its corresponding Bitcoin private key. Such a wallet has been generated for you in your
-							web browser and is displayed above.</p>
+						<p id="singletip">NOw it's time to create your own wallet</p>
 					</div>
 				</div>
 			</div>
@@ -226,185 +205,6 @@
 			</div>
 
 
-			<!-- BRAIN WALLET -->
-			<div id="brainarea" class="walletarea">
-				<div id="braincommands" class="commands">
-					<div class="row">
-						<span id="brainlabelenterpassphrase" class="label"><label for="brainpassphrase">Enter
-								Passphrase: </label></span>
-						<input tabindex="1" type="password" id="brainpassphrase" value="" onfocus="this.select();"
-							onkeypress="if (event.keyCode == 13) ninja.wallets.brainwallet.view();" />
-						<span><label id="brainlabelshow" for="brainpassphraseshow">Show?</label> <input type="checkbox"
-								id="brainpassphraseshow"
-								onchange="ninja.wallets.brainwallet.showToggle(this);" /></span>
-						<span class="print"><input type="button" name="print" id="brainprint" value="Print"
-								onclick="window.print();" /></span>
-					</div>
-					<div class="row extra">
-						<span class="label" id="brainlabelconfirm"><label for="brainpassphraseconfirm">Confirm
-								Passphrase: </label></span>
-						<input tabindex="2" type="password" id="brainpassphraseconfirm" value=""
-							onfocus="this.select();"
-							onkeypress="if (event.keyCode == 13) ninja.wallets.brainwallet.view();" />
-
-						<span id="brainalgorithm" class="notes right">Algorithm: SHA256(passphrase)</span>
-					</div>
-					<div class="row extra">
-						<span><label tabindex="3" id="brainlabelcompressed" for="braincompressed">Compressed
-								address?</label> <input type="checkbox" id="braincompressed" /></span>
-						<span><input tabindex="4" type="button" id="brainview" value="View"
-								onclick="ninja.wallets.brainwallet.view();" /></span>
-					</div>
-					<div class="row extra"><span id="brainalertpassphrasewarning">Brainwallet is very risky, if your
-							passphrase is not super complex/long/unique it's very likely it will be guessed by brute
-							force bots and your bitcoin to be stolen. Be careful!</span></div>
-				</div>
-				<div id="brainkeyarea" class="keyarea">
-					<div class="public">
-						<div id="brainqrcodepublic" class="qrcode_public"></div>
-						<div class="pubaddress">
-							<span class="label" id="brainlabelbitcoinaddress">Bitcoin Address:</span>
-							<span class="output" id="brainbitcoinaddress"></span>
-						</div>
-					</div>
-					<div class="private">
-						<div id="brainqrcodeprivate" class="qrcode_private"></div>
-						<div class="privwif">
-							<span class="label" id="brainlabelprivatekey">Private Key (Wallet Import Format):</span>
-							<span class="output" id="brainbitcoinprivwif"></span>
-						</div>
-					</div>
-				</div>
-			</div>
-
-			<!-- DETAILS -->
-			<div id="detailarea" class="walletarea">
-				<div id="detailcommands" class="commands">
-					<span><label id="detaillabelenterprivatekey" for="detailprivkey">Enter Private Key</label></span>
-					<input type="text" id="detailprivkey" value="" onfocus="this.select();"
-						onkeypress="if (event.keyCode == 13) ninja.wallets.detailwallet.viewDetails();" />
-					<span><input type="button" class="button" id="detailview" value="View Details"
-							onclick="ninja.wallets.detailwallet.viewDetails();" /></span>
-
-					<div id="detailbip38toggle">
-						<span><label id="detaillabelencrypt" for="detailencrypt">BIP38 Encrypt?</label> <input
-								type="checkbox" id="detailbip38checkbox"
-								onchange="ninja.wallets.detailwallet.toggleEncrypt(this);" /></span>
-					</div>
-					<div id="detailbip38commands">
-						<span><label id="detaillabelpassphrase">Enter BIP38 Passphrase</label> <input type="text"
-								id="detailprivkeypassphrase" value="" onfocus="this.select();"
-								onkeypress="if (event.keyCode == 13) ninja.wallets.detailwallet.enterOnPassphrase();" /></span>
-						<span id="detailbip38decryptspan"><input type="button" class="button"
-								id="detailbip38decryptbutton" value="Decrypt BIP38"
-								onclick="ninja.wallets.detailwallet.decryptBip38();" /></span>
-						<span id="detailbip38encryptspan"><input type="button" class="button"
-								id="detailbip38encryptbutton" value="Encrypt BIP38"
-								onclick="ninja.wallets.detailwallet.encryptBip38();" /></span>
-					</div>
-					<span class="print"><input type="button" class="button" name="print" id="detailprint" value="Print"
-							onclick="window.print();" /></span>
-					<div class="row extra">
-						<span><label id="detailkeyformats">Key Formats: WIF, WIFC, HEX, B64, B6, MINI,
-								BIP38</label></span>
-					</div>
-				</div>
-				<div id="detailkeyarea">
-					<div class="notes">
-						<span id="detaillabelnote1">Your Bitcoin Private Key is a unique secret number that only you
-							know. It can be encoded in a number of different formats. Below we show the Bitcoin Address
-							and Public Key that corresponds to your Private Key as well as your Private Key in the most
-							popular encoding formats (WIF, WIFC, HEX, B64).</span>
-						<br /><br />
-						<span id="detaillabelnote2">Bitcoin stores public keys in compressed format. The client
-							now also supports import and export of private keys with importprivkey/dumpprivkey. The
-							format of the exported private key is determined by whether the address was generated in an
-							old or new wallet.</span>
-					</div>
-					<div class="pubqr">
-						<div class="item">
-							<span class="label" id="detaillabelbitcoinaddress">Bitcoin Address</span>
-							<div id="detailqrcodepublic" class="qrcode_public"></div>
-							<span class="output" id="detailaddress"></span>
-						</div>
-						<div class="item right">
-							<span class="label" id="detaillabelbitcoinaddresscomp">Bitcoin Address Compressed</span>
-							<div id="detailqrcodepubliccomp" class="qrcode_public"></div>
-							<span class="output" id="detailaddresscomp"></span>
-						</div>
-					</div>
-					<br /><br />
-					<div class="item clear">
-						<span class="label" id="detaillabelpublickey">Public Key (130 characters [0-9A-F]):</span>
-						<span class="output pubkeyhex" id="detailpubkey"></span>
-					</div>
-					<div class="item">
-						<span class="label" id="detaillabelpublickeycomp">Public Key (compressed, 66 characters
-							[0-9A-F]):</span>
-						<span class="output" id="detailpubkeycomp"></span>
-					</div>
-					<hr />
-					<div class="privqr">
-						<div class="item">
-							<span class="label"><span id="detaillabelprivwif">Private Key WIF<br />51 characters base58,
-									starts with a</span> <span id="detailwifprefix">'5'</span></span>
-							<div id="detailqrcodeprivate" class="qrcode_private"></div>
-							<span class="output" id="detailprivwif"></span>
-						</div>
-						<div class="item right">
-							<span class="label"><span id="detaillabelprivwifcomp">Private Key WIF Compressed<br />52
-									characters base58, starts with a</span> <span id="detailcompwifprefix">'K' or
-									'L'</span></span>
-							<div id="detailqrcodeprivatecomp" class="qrcode_private"></div>
-							<span class="output" id="detailprivwifcomp"></span>
-						</div>
-					</div>
-					<br /><br />
-					<div class="item clear">
-						<span class="label" id="detaillabelprivhex">Private Key Hexadecimal Format (64 characters
-							[0-9A-F]):</span>
-						<span class="output" id="detailprivhex"></span>
-					</div>
-					<div class="item">
-						<span class="label" id="detaillabelprivb64">Private Key Base64 (44 characters):</span>
-						<span class="output" id="detailprivb64"></span>
-					</div>
-					<div class="item" style="display: none;" id="detailmini">
-						<span class="label" id="detaillabelprivmini">Private Key Mini Format (22, 26 or 30 characters,
-							starts with an 'S'):</span>
-						<span class="output" id="detailprivmini"></span>
-					</div>
-					<div class="item" style="display: none;" id="detailb6">
-						<span class="label" id="detaillabelprivb6">Private Key Base6 Format (99 characters
-							[0-5]):</span>
-						<span class="output" id="detailprivb6"></span>
-					</div>
-					<div class="item" style="display: none;" id="detailbip38">
-						<span class="label" id="detaillabelprivbip38">Private Key BIP38 Format (58 characters base58,
-							starts with '6P'):</span>
-						<div id="detailqrcodeprivatebip38" class="qrcode_private"></div>
-						<span class="output" id="detailprivbip38"></span>
-					</div>
-				</div>
-				<div class="faqs">
-					<div id="detailfaq1" class="faq">
-						<div id="detailq1" class="question" onclick="ninja.wallets.detailwallet.openCloseFaq(1);">
-							<span id="detaillabelq1">How do I make a wallet using dice? What is B6?</span>
-							<div id="detaile1" class="more"></div>
-						</div>
-						<div id="detaila1" class="answer">An important part of creating a Bitcoin wallet is ensuring the
-							random numbers used to create the wallet are truly random. Physical randomness is better
-							than computer generated pseudo-randomness. The easiest way to generate physical randomness
-							is with dice. To create a Bitcoin private key you only need one six sided die which you roll
-							99 times. Stopping each time to record the value of the die. When recording the values
-							follow these rules: 1=1, 2=2, 3=3, 4=4, 5=5, 6=0. By doing this you are recording the big
-							random number, your private key, in B6 or base 6 format. You can then enter the 99 character
-							base 6 private key into the text field above and click View Details. You will then see the
-							Bitcoin address associated with your private key. You should also make note of your private
-							key in WIF format since it is more widely used.</div>
-					</div>
-				</div>
-			</div>
 		</div>
 
 
@@ -523,9 +323,7 @@
 	<script type="text/javascript" src="js/ninja.singlewallet.js"></script>
 	<script type="text/javascript" src="js/ninja.paperwallet.js"></script>
 	<!-- <script type="text/javascript" src="js/ninja.bulkwallet.js"></script> -->
-	<script type="text/javascript" src="js/ninja.brainwallet.js"></script>
 	<!-- <script type="text/javascript" src="js/ninja.vanitywallet.js"></script> -->
-	<script type="text/javascript" src="js/ninja.detailwallet.js"></script>
 	<!-- <script type="text/javascript" src="js/ninja.splitwallet.js"></script> -->
 	<script type="text/javascript" src="js/ninja.unittests.js"></script>
 	<script type="text/javascript" src="js/ninja.onload.js"></script>

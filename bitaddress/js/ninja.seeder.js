@@ -98,16 +98,15 @@
 		// run sync unit tests
 		ninja.status.unitTests();
 		// open selected tab
-		var walletType = ninja.tab.whichIsOpen();
-		if (walletType == null) {
-			ninja.tab.select("singlewallet");
-		} else {
-			ninja.tab.select(walletType)
-		}
+		// var walletType = ninja.tab.whichIsOpen();
+		// if (walletType == null) {
+		ninja.tab.select("gallery");
+		// } else {
+		// 	ninja.tab.select(walletType)
+		// }
 		document.getElementById("generate").style.display = "none";
 		// update labels for dependent wallets
 		var culture = (ninja.getQueryString()["culture"] == null ? "en" : ninja.getQueryString()["culture"]);
 		ninja.translator.translate(culture);
-		ninja.seeder.removePoints();
 	}
 };
