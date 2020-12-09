@@ -54,7 +54,7 @@ input[type=checkbox] { position: relative; z-index: 20; }
 #paperarea .artwallet .papersvg { width: 800px; height: 430px; border: 1px solid #000000; margin-top: 5px; margin-bottom: 5px; padding: 2px; left: 0; }
 #paperarea .artwallet .qrcode_public { top: 60px; left: 25px; z-index: 100; margin: 0; float: none; display: block; position: absolute; background-color: #FFFFFF; 
 		                                padding: 5px 5px 2px 5px; } 
-#paperarea .artwallet .qrcode_private { top: 120px; right: 25px; z-index: 100; margin: 0; float: none; display: block; position: absolute; background-color: #FFFFFF; 
+#paperarea .artwallet .qrcode_private { top: 120px; left: 588px; z-index: 100; margin: 0; float: none; display: block; position: absolute; background-color: #FFFFFF; 
 		                                padding: 5px 5px 2px 5px; }
 #paperarea .artwallet .bitcoinaddress  
 {
