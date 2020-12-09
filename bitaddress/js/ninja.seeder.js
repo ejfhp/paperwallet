@@ -96,11 +96,11 @@
 	seedingOver: function () {
 		ninja.seeder.isStillSeeding = false;
 		// run sync unit tests
-		ninja.status.unitTests();
+		// ninja.status.unitTests();
 		// open selected tab
 		// var walletType = ninja.tab.whichIsOpen();
 		// if (walletType == null) {
-		ninja.tab.select("gallery");
+		// ninja.tab.select("paperwallet");
 		// } else {
 		// 	ninja.tab.select(walletType)
 		// }

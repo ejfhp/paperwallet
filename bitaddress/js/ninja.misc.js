@@ -62,35 +62,35 @@
 })(ninja);
 
 ninja.tab = {
-    select: function (walletTab) {
-        // detect type: normally an HtmlElement/object but when string then get the element
-        if (typeof walletTab === 'string') {
-            walletTab = document.getElementById(walletTab);
-        }
-        var walletType = walletTab.getAttribute("id");
+//     select: function (walletTab) {
+//         // detect type: normally an HtmlElement/object but when string then get the element
+//         if (typeof walletTab === 'string') {
+//             walletTab = document.getElementById(walletTab);
+//         }
+//         var walletType = walletTab.getAttribute("id");
 
-        if (walletTab.className.indexOf("selected") == -1) {
-            // unselect all tabs
-            for (var wType in ninja.wallets) {
-                document.getElementById(wType).className = "tab";
-                ninja.wallets[wType].close();
-            }
+//         if (walletTab.className.indexOf("selected") == -1) {
+//             // unselect all tabs
+//             for (var wType in ninja.wallets) {
+//                 document.getElementById(wType).className = "tab";
+//                 ninja.wallets[wType].close();
+//             }
             
-        }
-    },
+//         }
+//     },
 
-    whichIsOpen: function () {
-        var isOpen;
-        for (var wType in ninja.wallets) {
-            isOpen = ninja.wallets[wType].isOpen();
-            if (isOpen) {
-                return wType;
-            }
-        }
-        return null;
-    }
+//     whichIsOpen: function () {
+//         var isOpen;
+//         for (var wType in ninja.wallets) {
+//             isOpen = ninja.wallets[wType].isOpen();
+//             if (isOpen) {
+//                 return wType;
+//             }
+//         }
+//         return null;
+//     }
 
-};
+// };
 
 ninja.getQueryString = function () {
 	var result = {}, queryString = location.search.substring(1), re = /([^&=]+)=([^&]*)/g, m;
