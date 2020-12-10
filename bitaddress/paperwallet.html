@@ -104,7 +104,9 @@
 </head>
 
 <!-- <body onclick="SecureRandom.seedTime();" onmousemove="ninja.seeder.seed(event);"> -->
-<body onload="ninja.wallets.paperwallet.open()">
+<!-- <body onload="ninja.wallets.paperwallet.open()"> -->
+
+<body onload="ShowTab('gallery')">
 	<div id="busyblock"></div>
 	<div id="main">
 		<div id="culturemenu">
@@ -125,32 +127,78 @@
 		<div id="tagline">Open Source JavaScript Client-Side Bitcoin Wallet Generator</div>
 		<div id="seedpoolarea"><textarea rows="16" cols="62" id="seedpool"></textarea></div>
 		<div id="testnet"></div>
+		<ul class="menu" id="menu">
+			<li class="tab" id="galleryTab" onclick="ShowTab('gallery');">Gallery
+			<li class="tab" id="paperwallet" onclick="ShowTab('paperarea');">Paper Wallet
+		</ul>
 
 		<!-- RANDOMNESS GENERATION -->
 
 		<!-- WALLETS MENU -->
 		<div id="wallets">
 			<!-- WALLET GALLERY -->
-			<!-- <div id="gallery" class="gelleryarea">
+			<div id="gallery" class="gelleryarea">
 				<div id="presentation" class="presentation">
 					<div class="row">
 						<p>With a paperwallet it is possible to put Bitcoin on paper.</p>
 					</div>
 				</div>
-				<div class="list">
+				<div class="gallerylist">
 					<div class="template">
-					<div class="templateimg">
-						<img src="img/art_bitcoin.jpg"/>
+						<div class="templatetext">
+							<p>Bitcoin</p>
+						</div>
+						<div class="templateart">
+							<img src="img/art_bitcoin.jpg" class="templateimg" />
+						</div>
 					</div>
-					<div class="templatetext">
-						<p>Bitcoin</p>
+					<div class="template">
+						<div class="templatetext">
+							<p>Bitcoin SV</p>
+						</div>
+						<div class="templateart">
+							<img src="img/art_bitcoinsv.jpg" class="templateimg" />
+						</div>
 					</div>
+					<div class="template">
+						<div class="templatetext">
+							<p>Blank</p>
+						</div>
+						<div class="templateart">
+							<img src="img/art_blank.jpg" class="templateimg" />
+						</div>
 					</div>
-					<div id="singlesafety">
-						<p id="singletip">NOw it's time to create your own wallet</p>
+					<div class="template">
+						<div class="templatetext">
+							<p>Blak&White</p>
+						</div>
+						<div class="templateart">
+							<img src="img/art_bnw.jpg" class="templateimg" />
+						</div>
 					</div>
+					<div class="template">
+						<div class="templatetext">
+							<p>Christmas</p>
+						</div>
+						<div class="templateart">
+							<img src="img/art_christmas.jpg" class="templateimg" />
+						</div>
+					</div>
+					<div class="template">
+						<div class="templatetext">
+							<p>Intro</p>
+						</div>
+						<div class="templateart">
+							<img src="img/art_intro_it.jpg" class="templateimg" />
+						</div>
+					</div>
+
+
+
+
+
 				</div>
-			</div> -->
+			</div>
 
 			<!-- PAPER WALLET -->
 			<div id="paperarea">
@@ -159,7 +207,7 @@
 						<span><label id="paperlabelhideart" for="paperart">Hide Art?</label> <input type="checkbox"
 								id="paperart" onchange="ninja.wallets.paperwallet.toggleArt(this);" /></span>
 						<span><label id="paperlabeladdressestogenerate" for="paperlimit">Addresses to generate:</label>
-							<input type="text" id="paperlimit" /></span>
+							<input type="text" id="paperlimit" value="1" /></span>
 						<span><label id="paperstyle" for="art">Art: </label>
 							<select id="art">
 								<option value="art_bitcoin.jpg" selected>Bitcoin</option>
@@ -276,7 +324,7 @@
 					<span class="item"><a href="https://github.com/pointbiz/bitaddress.org"
 							target="_blank">Bitaddress.org GitHub Repository</a></span>
 					<span class="item"><a href="https://github.com/ejfhp/paperwallet/archive/master.zip">
-						Download and run this locally (bitaddress folder).</a></span>
+							Download and run this locally (bitaddress folder).</a></span>
 				</div>
 			</div>
 			<div class="copyright">
@@ -292,6 +340,7 @@
 		</div>
 	</div>
 
+	<script type="text/javascript" src="js/transition.js"></script>
 	<script type="text/javascript" src="js/ninja.key.js"></script>
 	<script type="text/javascript" src="js/ninja.qrcode.js"></script>
 	<script type="text/javascript" src="js/ninja.misc.js"></script>
