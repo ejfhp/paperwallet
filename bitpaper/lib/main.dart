@@ -61,6 +61,17 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
+    BottomAppBar bottomBar = BottomAppBar(
+      color: Colors.amber,
+      child: Text("Bottom"),
+    );
+    AppBar topBar = AppBar(title: Text(widget.title));
+    ListTile templateImg = ListTile(leading: Text("Template"));
+    ListView list = ListView(children: [
+      templateImg,
+      Text("Drawer"),
+    ]);
+    Drawer drawer = Drawer(child: list);
     // This method is rerun every time setState is called, for instance as done
     // by the _incrementCounter method above.
     //
@@ -68,11 +79,9 @@ class _MyHomePageState extends State<MyHomePage> {
     // fast, so that you can just rebuild anything that needs updating rather
     // than having to individually change instances of widgets.
     return Scaffold(
-      appBar: AppBar(
-        // Here we take the value from the MyHomePage object that was created by
-        // the App.build method, and use it to set our appbar title.
-        title: Text(widget.title),
-      ),
+      appBar: topBar,
+      bottomNavigationBar: bottomBar,
+      drawer: drawer,
       body: Center(
         // Center is a layout widget. It takes a single child and positions it
         // in the middle of the parent.
