@@ -103,7 +103,9 @@
 	</script>
 </head>
 
-<body onclick="SecureRandom.seedTime();" onmousemove="ninja.seeder.seed(event);">
+<!-- <body onclick="SecureRandom.seedTime();" onmousemove="ninja.seeder.seed(event);"> -->
+<body onload="ninja.seeder.seedingOver();">
+	
 	<div id="busyblock"></div>
 	<div id="main">
 		<div id="culturemenu">
@@ -127,18 +129,18 @@
 		<ul class="menu" id="menu">
 			<li class="tab" id="singlewallet" onclick="ninja.tab.select(this);">Single Wallet
 			<li class="tab" id="paperwallet" onclick="ninja.tab.select(this);">Paper Wallet
-			<li class="tab" id="brainwallet" onclick="ninja.tab.select(this);">Brain Wallet
-			<li class="tab" id="detailwallet" onclick="ninja.tab.select(this);">Wallet Details
+			<!-- <li class="tab" id="brainwallet" onclick="ninja.tab.select(this);">Brain Wallet -->
+			<!-- <li class="tab" id="detailwallet" onclick="ninja.tab.select(this);">Wallet Details -->
 		</ul>
 
 		<!-- RANDOMNESS GENERATION -->
 		<div id="generate">
 			<span id="generatelabelbitcoinaddress">Generating Bitcoin Address...</span><br />
-			<span id="generatelabelmovemouse">MOVE your mouse around to add some extra randomness... </span><span
+			<!-- <span id="generatelabelmovemouse">MOVE your mouse around to add some extra randomness... </span><span
 				id="mousemovelimit"></span><br />
 			<span id="generatelabelkeypress">OR type some random characters into this textbox</span> <input type="text"
 				id="generatekeyinput" onkeydown="ninja.seeder.seedKeyPress(event);" /><br />
-			<div id="seedpooldisplay"></div>
+			<div id="seedpooldisplay"></div> -->
 		</div>
 
 		<!-- WALLETS MENU -->
@@ -523,9 +525,9 @@
 	<script type="text/javascript" src="js/ninja.singlewallet.js"></script>
 	<script type="text/javascript" src="js/ninja.paperwallet.js"></script>
 	<!-- <script type="text/javascript" src="js/ninja.bulkwallet.js"></script> -->
-	<script type="text/javascript" src="js/ninja.brainwallet.js"></script>
+	<!-- <script type="text/javascript" src="js/ninja.brainwallet.js"></script> -->
 	<!-- <script type="text/javascript" src="js/ninja.vanitywallet.js"></script> -->
-	<script type="text/javascript" src="js/ninja.detailwallet.js"></script>
+	<!-- <script type="text/javascript" src="js/ninja.detailwallet.js"></script> -->
 	<!-- <script type="text/javascript" src="js/ninja.splitwallet.js"></script> -->
 	<script type="text/javascript" src="js/ninja.unittests.js"></script>
 	<script type="text/javascript" src="js/ninja.onload.js"></script>

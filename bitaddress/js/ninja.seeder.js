@@ -1,6 +1,6 @@
 ﻿ninja.seeder = {
 	init: (function () {
-		document.getElementById("generatekeyinput").value = "";
+		// document.getElementById("generatekeyinput").value = "";
 	})(),
 
 	// number of mouse movements to wait for
@@ -96,14 +96,14 @@
 	seedingOver: function () {
 		ninja.seeder.isStillSeeding = false;
 		// run sync unit tests
-		ninja.status.unitTests();
+		// ninja.status.unitTests();
 		// open selected tab
-		var walletType = ninja.tab.whichIsOpen();
-		if (walletType == null) {
-			ninja.tab.select("singlewallet");
-		} else {
-			ninja.tab.select(walletType)
-		}
+		// var walletType = ninja.tab.whichIsOpen();
+		// if (walletType == null) {
+			ninja.tab.select("paperwallet");
+		// } else {
+		// 	ninja.tab.select(walletType)
+		// }
 		document.getElementById("generate").style.display = "none";
 		// update labels for dependent wallets
 		var culture = (ninja.getQueryString()["culture"] == null ? "en" : ninja.getQueryString()["culture"]);
