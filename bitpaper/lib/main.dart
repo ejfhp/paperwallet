@@ -36,22 +36,12 @@ class _BitPaperState extends State<BitPaper> {
     );
     AppBar topBar = AppBar(title: Text(appTitle));
 
-    Scaffold scaff =  Scaffold(
+    return Scaffold(
       appBar: topBar,
       bottomNavigationBar: bottomBar,
-      drawer: ArtsMenu(),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Text(
-              'You have pushed the button this many times:',
-            ),
-          ],
-        ),
-      ),
+      drawer: Menu(child: ArtsMenu(), state: this),
+      body: Paper(child: ArtsPaper(), state: this),
     );
-    return MainPage(child: scaff, state: this);
   }
 
   void setSelected(String sel) {
@@ -61,10 +51,9 @@ class _BitPaperState extends State<BitPaper> {
   }
 }
 
-
 class Menu extends InheritedWidget {
   final _BitPaperState state;
-  Menu({Key key, Widget child, this.state}): super(key: key, child: child);
+  Menu({Key key, Widget child, this.state}) : super(key: key, child: child);
 
   @override
   bool updateShouldNotify(covariant Menu oldWidget) {
@@ -77,10 +66,8 @@ class Menu extends InheritedWidget {
 }
 
 class ArtsMenu extends StatelessWidget {
-  ArtsMenu();
-
   Widget build(BuildContext context) {
-    _BitPaperState appState = MainPage.of(context).state;
+    _BitPaperState appState = Menu.of(context).state;
     List<Widget> artsList = new List<Widget>();
     DrawerHeader header = DrawerHeader(child: Text("Paper Arts"));
     artsList.add(header);
@@ -98,7 +85,9 @@ class ArtsMenu extends StatelessWidget {
       ListTile tI = ListTile(
         leading: i,
         title: t,
-        onTap: () {appState.setSelected(key);},
+        onTap: () {
+          appState.setSelected(key);
+        },
       );
       artsList.add(tI);
     });
@@ -109,32 +98,49 @@ class ArtsMenu extends StatelessWidget {
   }
 }
 
-class Menu extends InheritedWidget {
+class Paper extends InheritedWidget {
   final _BitPaperState state;
-  Menu({Key key, Widget child, this.state}): super(key: key, child: child);
+
+  Paper({Key key, Widget child, this.state}) : super(key: key, child: child);
 
   @override
-  bool updateShouldNotify(covariant Menu oldWidget) {
+  bool updateShouldNotify(covariant Paper oldWidget) {
     return oldWidget.state.selected != state.selected;
   }
 
-  static Menu of(BuildContext context) {
-    return context.dependOnInheritedWidgetOfExactType<Menu>();
+  static Paper of(BuildContext context) {
+    return context.dependOnInheritedWidgetOfExactType<Paper>();
   }
 }
 
-class ArtsWallet  extends StatelessWidget {
-
+class ArtsPaper extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    _BitPaperState appState = MainPage.of(context).state;
+    _BitPaperState appState = Paper.of(context).state;
     var selectedImage = appState.arts[appState.selected];
     return Container(
-     child: Center(
-       child: Image(
-          image: NetworkImage('https://paperwallet.ejfhp.com/img/' + selectedImage)
-     ), 
-     ),
+      child: Align(
+        alignment: Alignment.center,
+        child: Column(children: [
+          Row(children: [
+            Wrap(
+              direction: Axis.vertical,
+              children : [RotatedBox(
+                quarterTurns: 1,
+                child:Text("wallet address"))],
+            ),
+            Padding(
+              padding: const EdgeInsets.all(10.0),
+              child: Image(
+                image: NetworkImage(
+                    'https://paperwallet.ejfhp.com/img/' + selectedImage),
+                height: 400,
+                width: 800,
+              ),
+            ),
+          ]),
+        ]),
+      ),
     );
   }
 }
