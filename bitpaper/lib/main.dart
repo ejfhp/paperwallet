@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:qr_flutter/qr_flutter.dart';
+import 'wallet.dart';
 
 const appTitle = "BitPaper - Bitcoin on Paper";
 
@@ -26,7 +28,31 @@ class _BitPaperState extends State<BitPaper> {
     'intro it': 'art_intro_it.jpg',
     'intro': 'art_intro.jpg'
   };
+  List<Wallet> wallets;
   String selected = "bitcoin";
+
+  @override
+  Widget build(BuildContext context) {
+
+    wallets = List<Wallet>();
+    Wallet w1 = Wallet();
+    Wallet w2 = Wallet();
+    wallets.add(w1);
+    wallets.add(w2);
+    return BitPaperUI(this);
+  }
+
+  void setSelected(String sel) {
+    setState(() {
+      selected = sel;
+    });
+  }
+}
+
+class BitPaperUI extends StatelessWidget {
+  final _BitPaperState state;
+
+  BitPaperUI(this.state);
 
   @override
   Widget build(BuildContext context) {
@@ -39,15 +65,9 @@ class _BitPaperState extends State<BitPaper> {
     return Scaffold(
       appBar: topBar,
       bottomNavigationBar: bottomBar,
-      drawer: Menu(child: ArtsMenu(), state: this),
-      body: Paper(child: ArtsPaper(), state: this),
+      drawer: Menu(child: ArtsMenu(), state: state),
+      body: Sheet(child: WalletSheet(), state: state),
     );
-  }
-
-  void setSelected(String sel) {
-    setState(() {
-      selected = sel;
-    });
   }
 }
 
@@ -98,49 +118,106 @@ class ArtsMenu extends StatelessWidget {
   }
 }
 
-class Paper extends InheritedWidget {
+class Sheet extends InheritedWidget {
   final _BitPaperState state;
 
-  Paper({Key key, Widget child, this.state}) : super(key: key, child: child);
+  Sheet({Key key, Widget child, this.state}) : super(key: key, child: child);
 
   @override
-  bool updateShouldNotify(covariant Paper oldWidget) {
+  bool updateShouldNotify(covariant Sheet oldWidget) {
     return oldWidget.state.selected != state.selected;
   }
 
-  static Paper of(BuildContext context) {
-    return context.dependOnInheritedWidgetOfExactType<Paper>();
+  static Sheet of(BuildContext context) {
+    return context.dependOnInheritedWidgetOfExactType<Sheet>();
   }
 }
 
-class ArtsPaper extends StatelessWidget {
+class WalletSheet extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    _BitPaperState appState = Paper.of(context).state;
+    _BitPaperState appState = Sheet.of(context).state;
     var selectedImage = appState.arts[appState.selected];
-    return Container(
-      child: Align(
-        alignment: Alignment.center,
-        child: Column(children: [
-          Row(children: [
-            Wrap(
-              direction: Axis.vertical,
-              children : [RotatedBox(
-                quarterTurns: 1,
-                child:Text("wallet address"))],
+    var wallets = appState.wallets;
+    List<Paper> papers = List<Paper>();
+    wallets.forEach((element) {
+      Paper p = Paper(
+        image: Image(
+          image: NetworkImage(
+              'https://paperwallet.ejfhp.com/img/' + selectedImage),
+        ),
+        imageName: appState.selected,
+        imageHeight: 400,
+        imageWidth: 800,
+        privateKey: element.privateKey,
+        publicAddress: element.publicAddress,
+      );
+      papers.add(p);
+    });
+    return Column(children: papers);
+  }
+}
+
+class Paper extends StatelessWidget {
+  final String imageName;
+  final Image image;
+  final String publicAddress;
+  final String privateKey;
+  final double imageWidth;
+  final double imageHeight;
+
+  Paper(
+      {this.imageName,
+      this.image,
+      this.imageWidth,
+      this.imageHeight,
+      this.privateKey,
+      this.publicAddress});
+
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+        width: this.imageWidth,
+        height: this.imageHeight,
+        child: Stack(
+          children: [
+            Positioned.fill(
+              child: this.image,
             ),
-            Padding(
-              padding: const EdgeInsets.all(10.0),
-              child: Image(
-                image: NetworkImage(
-                    'https://paperwallet.ejfhp.com/img/' + selectedImage),
-                height: 400,
-                width: 800,
+            Positioned(
+              child: RotatedBox(quarterTurns: 3, child: Text(this.privateKey)),
+              top: 50,
+              left: 50,
+              width: 300,
+            ),
+            Positioned(
+              child: QrImage(
+                data: this.privateKey,
+                version: QrVersions.auto,
+                size: 300,
               ),
+              top: 50,
+              left: 50,
+              width: 300,
             ),
-          ]),
-        ]),
-      ),
-    );
+            Positioned(
+              child:
+                  RotatedBox(quarterTurns: 3, child: Text(this.publicAddress)),
+              top: 50,
+              left: 50,
+              width: 800,
+            ),
+            Positioned(
+              child: QrImage(
+                data: this.publicAddress,
+                version: QrVersions.auto,
+                size: 300,
+              ),
+              top: 50,
+              left: 50,
+              width: 800,
+            ),
+          ],
+        ));
   }
 }
