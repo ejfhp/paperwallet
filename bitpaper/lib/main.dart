@@ -1,6 +1,8 @@
+import 'package:bitpaper/arts.dart';
 import 'package:flutter/material.dart';
 import 'package:qr_flutter/qr_flutter.dart';
 import 'wallet.dart';
+import 'dart:math' as math;
 
 const appTitle = "BitPaper - Bitcoin on Paper";
 
@@ -17,7 +19,7 @@ void main() {
 
 class BitPaper extends StatefulWidget {
   @override
-  _BitPaperState createState() => _BitPaperState();
+  _BitPaperState createState() => _BitPaperState(2);
 }
 
 class _BitPaperState extends State<BitPaper> {
@@ -28,17 +30,19 @@ class _BitPaperState extends State<BitPaper> {
     'intro it': 'art_intro_it.jpg',
     'intro': 'art_intro.jpg'
   };
-  List<Wallet> wallets;
+  List<Wallet> wallets = List<Wallet>();
   String selected = "bitcoin";
+
+  _BitPaperState(int initialWallets) {
+    getArts();
+    for (int i = 0; i < initialWallets; i++) {
+      Wallet w = Wallet();
+      wallets.add(w);
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
-
-    wallets = List<Wallet>();
-    Wallet w1 = Wallet();
-    Wallet w2 = Wallet();
-    wallets.add(w1);
-    wallets.add(w2);
     return BitPaperUI(this);
   }
 
@@ -100,8 +104,7 @@ class ArtsMenu extends StatelessWidget {
       } else {
         t = Text(key);
       }
-      var i = Image(
-          image: NetworkImage('https://paperwallet.ejfhp.com/img/' + value));
+      var i = Image.network('./img/' + value);
       ListTile tI = ListTile(
         leading: i,
         title: t,
@@ -142,10 +145,7 @@ class WalletSheet extends StatelessWidget {
     List<Paper> papers = List<Paper>();
     wallets.forEach((element) {
       Paper p = Paper(
-        image: Image(
-          image: NetworkImage(
-              'https://paperwallet.ejfhp.com/img/' + selectedImage),
-        ),
+        image: Image.network('./img/'+selectedImage),
         imageName: appState.selected,
         imageHeight: 400,
         imageWidth: 800,
@@ -202,10 +202,16 @@ class Paper extends StatelessWidget {
             ),
             Positioned(
               child:
-                  RotatedBox(quarterTurns: 3, child: Text(this.publicAddress)),
-              top: 50,
-              left: 50,
-              width: 800,
+                  Transform.rotate(
+                    angle: (45/180)* math.pi,
+                    // child: Text(this.publicAddress),
+                    child: Text("<<<---------------------###------------------------->>>"),
+                    alignment: Alignment.topLeft,
+                    origin: Offset(0, 0),
+                    ),
+              top: 200,
+              left: 400,
+              width: 400,
             ),
             Positioned(
               child: QrImage(

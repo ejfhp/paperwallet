@@ -63,13 +63,15 @@ packages:
       name: cupertino_icons
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "1.0.1+1"
+    version: "1.0.2"
   dartsv:
     dependency: "direct main"
     description:
-      name: dartsv
-      url: "https://pub.dartlang.org"
-    source: hosted
+      path: "."
+      ref: HEAD
+      resolved-ref: dec90c97c701a19bbffbecde7680f88938f47424
+      url: "https://github.com/ejfhp/dartsv.git"
+    source: git
     version: "0.3.3"
   fake_async:
     dependency: transitive
@@ -95,13 +97,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "0.1.2"
-  js:
-    dependency: "direct main"
-    description:
-      name: js
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "0.6.2"
   matcher:
     dependency: transitive
     description:
