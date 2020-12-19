@@ -154,4 +154,5 @@ PrivKey.Testnet = class extends PrivKey {
   }
 }
 
-export { PrivKey }
+// export { PrivKey }
+window.PK = PrivKey;

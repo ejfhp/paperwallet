@@ -1,7 +1,6 @@
-import 'package:bitpaper/arts.dart';
 import 'package:flutter/material.dart';
 import 'package:qr_flutter/qr_flutter.dart';
-import 'wallet.dart';
+import 'state.dart';
 import 'dart:math' as math;
 
 const appTitle = "BitPaper - Bitcoin on Paper";
@@ -19,42 +18,11 @@ void main() {
 
 class BitPaper extends StatefulWidget {
   @override
-  _BitPaperState createState() => _BitPaperState(2);
-}
-
-class _BitPaperState extends State<BitPaper> {
-  Map<String, String> arts = {
-    'bitcoin': 'art_bitcoin.jpg',
-    'bitcoin dragon': 'art_bitcoinsv.jpg',
-    'christmas': 'art_christmas.jpg',
-    'intro it': 'art_intro_it.jpg',
-    'intro': 'art_intro.jpg'
-  };
-  List<Wallet> wallets = List<Wallet>();
-  String selected = "bitcoin";
-
-  _BitPaperState(int initialWallets) {
-    getArts();
-    for (int i = 0; i < initialWallets; i++) {
-      Wallet w = Wallet();
-      wallets.add(w);
-    }
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return BitPaperUI(this);
-  }
-
-  void setSelected(String sel) {
-    setState(() {
-      selected = sel;
-    });
-  }
+  BitPaperState createState() => BitPaperState();
 }
 
 class BitPaperUI extends StatelessWidget {
-  final _BitPaperState state;
+  final BitPaperState state;
 
   BitPaperUI(this.state);
 
@@ -76,7 +44,7 @@ class BitPaperUI extends StatelessWidget {
 }
 
 class Menu extends InheritedWidget {
-  final _BitPaperState state;
+  final BitPaperState state;
   Menu({Key key, Widget child, this.state}) : super(key: key, child: child);
 
   @override
@@ -91,8 +59,8 @@ class Menu extends InheritedWidget {
 
 class ArtsMenu extends StatelessWidget {
   Widget build(BuildContext context) {
-    _BitPaperState appState = Menu.of(context).state;
-    List<Widget> artsList = new List<Widget>();
+    BitPaperState appState = Menu.of(context).state;
+    List<Widget> artsList = new List<Widget>.empty(growable: true);
     DrawerHeader header = DrawerHeader(child: Text("Paper Arts"));
     artsList.add(header);
     var arts = appState.arts;
@@ -104,7 +72,7 @@ class ArtsMenu extends StatelessWidget {
       } else {
         t = Text(key);
       }
-      var i = Image.network('./img/' + value);
+      var i = Image.network('./img/' + value.fileName);
       ListTile tI = ListTile(
         leading: i,
         title: t,
@@ -122,7 +90,7 @@ class ArtsMenu extends StatelessWidget {
 }
 
 class Sheet extends InheritedWidget {
-  final _BitPaperState state;
+  final BitPaperState state;
 
   Sheet({Key key, Widget child, this.state}) : super(key: key, child: child);
 
@@ -139,21 +107,23 @@ class Sheet extends InheritedWidget {
 class WalletSheet extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    _BitPaperState appState = Sheet.of(context).state;
-    var selectedImage = appState.arts[appState.selected];
+    BitPaperState appState = Sheet.of(context).state;
+    var art = appState.getSelectedArt();
     var wallets = appState.wallets;
-    List<Paper> papers = List<Paper>();
-    wallets.forEach((element) {
-      Paper p = Paper(
-        image: Image.network('./img/'+selectedImage),
-        imageName: appState.selected,
-        imageHeight: 400,
-        imageWidth: 800,
-        privateKey: element.privateKey,
-        publicAddress: element.publicAddress,
-      );
-      papers.add(p);
-    });
+    List<Paper> papers = List<Paper>.empty(growable: true);
+    if (art != null) {
+      wallets.forEach((element) {
+        Paper p = Paper(
+          image: Image.network('./img/' + art.fileName),
+          imageName: appState.selected,
+          imageHeight: 400,
+          imageWidth: 800,
+          privateKey: element.privateKey,
+          publicAddress: element.publicAddress,
+        );
+        papers.add(p);
+      });
+    }
     return Column(children: papers);
   }
 }
@@ -201,14 +171,14 @@ class Paper extends StatelessWidget {
               width: 300,
             ),
             Positioned(
-              child:
-                  Transform.rotate(
-                    angle: (45/180)* math.pi,
-                    // child: Text(this.publicAddress),
-                    child: Text("<<<---------------------###------------------------->>>"),
-                    alignment: Alignment.topLeft,
-                    origin: Offset(0, 0),
-                    ),
+              child: Transform.rotate(
+                angle: (45 / 180) * math.pi,
+                // child: Text(this.publicAddress),
+                child: Text(
+                    "<<<---------------------###------------------------->>>"),
+                alignment: Alignment.topLeft,
+                origin: Offset(0, 0),
+              ),
               top: 200,
               left: 400,
               width: 400,

@@ -1,0 +1,30 @@
+{
+    "name": "bitcoin",
+    "file": "art_christmas.jpg",
+    "height": 430,
+    "width": 800,
+    "pk_qr": {
+        "top": 50,
+        "right": 50,
+        "length": 100,
+        "rotation": 0
+    },
+    "pk": {
+        "top": 50,
+        "right": 50,
+        "length": 100,
+        "rotation": 90
+    },
+    "address_qr": {
+        "top": 50,
+        "right": 50,
+        "length": 100,
+        "rotation": 0
+    },
+    "address": {
+        "top": 50,
+        "right": 50,
+        "length": 100,
+        "rotation": 90
+    }
+}
