@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:qr_flutter/qr_flutter.dart';
 import 'state.dart';
+import 'wallet.dart';
+import 'art.dart';
 import 'dart:math' as math;
 
 const appTitle = "BitPaper - Bitcoin on Paper";
@@ -72,7 +74,7 @@ class ArtsMenu extends StatelessWidget {
       } else {
         t = Text(key);
       }
-      var i = Image.network('./img/' + value.fileName);
+      var i = Image.network(value.url);
       ListTile tI = ListTile(
         leading: i,
         title: t,
@@ -111,16 +113,9 @@ class WalletSheet extends StatelessWidget {
     var art = appState.getSelectedArt();
     var wallets = appState.wallets;
     List<Paper> papers = List<Paper>.empty(growable: true);
-    if (art != null) {
-      wallets.forEach((element) {
-        Paper p = Paper(
-          image: Image.network('./img/' + art.fileName),
-          imageName: appState.selected,
-          imageHeight: 400,
-          imageWidth: 800,
-          privateKey: element.privateKey,
-          publicAddress: element.publicAddress,
-        );
+    if (art != null && wallets != null) {
+      wallets.forEach((w) {
+        Paper p = Paper(wallet: w, art: art);
         papers.add(p);
       });
     }
@@ -129,71 +124,80 @@ class WalletSheet extends StatelessWidget {
 }
 
 class Paper extends StatelessWidget {
-  final String imageName;
-  final Image image;
-  final String publicAddress;
-  final String privateKey;
-  final double imageWidth;
-  final double imageHeight;
+  final Wallet wallet;
+  final Art art;
 
-  Paper(
-      {this.imageName,
-      this.image,
-      this.imageWidth,
-      this.imageHeight,
-      this.privateKey,
-      this.publicAddress});
+  Paper({this.wallet, this.art});
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-        width: this.imageWidth,
-        height: this.imageHeight,
-        child: Stack(
-          children: [
-            Positioned.fill(
-              child: this.image,
-            ),
-            Positioned(
-              child: RotatedBox(quarterTurns: 3, child: Text(this.privateKey)),
-              top: 50,
-              left: 50,
-              width: 300,
-            ),
-            Positioned(
-              child: QrImage(
-                data: this.privateKey,
-                version: QrVersions.auto,
-                size: 300,
-              ),
-              top: 50,
-              left: 50,
-              width: 300,
-            ),
-            Positioned(
-              child: Transform.rotate(
-                angle: (45 / 180) * math.pi,
-                // child: Text(this.publicAddress),
-                child: Text(
-                    "<<<---------------------###------------------------->>>"),
-                alignment: Alignment.topLeft,
-                origin: Offset(0, 0),
-              ),
-              top: 200,
-              left: 400,
-              width: 400,
-            ),
-            Positioned(
-              child: QrImage(
-                data: this.publicAddress,
-                version: QrVersions.auto,
-                size: 300,
-              ),
-              top: 50,
-              left: 50,
-              width: 800,
-            ),
-          ],
-        ));
+    List<Widget> els = List<Widget>.empty(growable: true);
+    els.add(Positioned.fill(
+      child: Image.network(this.art.url),
+    ));
+    if (art.pk.visible) {
+      els.add(getPaperElement(
+          art.pk,
+          Text(
+            wallet.privateKey,
+            style: TextStyle(fontSize: art.pk.size),
+            textAlign: TextAlign.left,
+          )));
+    }
+    if (art.pkQr.visible) {
+      QrImage qr = QrImage(
+        data: wallet.privateKey,
+        version: QrVersions.auto,
+        size: art.pkQr.size,
+      );
+      els.add(getPaperElement(art.pkQr, qr));
+    }
+    if (art.ad.visible) {
+      els.add(getPaperElement(
+          art.ad,
+          Text(
+            wallet.publicAddress,
+            style: TextStyle(fontSize: art.ad.size),
+            textAlign: TextAlign.left,
+          )));
+    }
+    if (art.adQr.visible) {
+      QrImage qr = QrImage(
+        data: wallet.publicAddress,
+        version: QrVersions.auto,
+        size: art.adQr.size,
+      );
+      els.add(getPaperElement(art.adQr, qr));
+    }
+    return Padding(
+        padding: EdgeInsets.all(5),
+        child: Container(
+          decoration: BoxDecoration(
+            border: Border.all(width: 1, color: Colors.black45),
+          ),
+          child: SizedBox(
+            width: this.art.width,
+            height: this.art.height,
+            child: Stack(
+              fit: StackFit.expand,
+              clipBehavior: Clip.hardEdge,
+              children: els,
+            ))));
   }
+}
+
+Widget getPaperElement(ArtElement el, Widget child) {
+  double angle = (el.rotation / 180) * math.pi;
+  return Positioned(
+    child: Transform.rotate(
+      origin: Offset(0, 0),
+      alignment: Alignment.centerLeft,
+      angle: angle,
+      child: child,
+    ),
+    top: el.top,
+    left: el.left,
+    width: el.width,
+    height: el.height,
+  );
 }

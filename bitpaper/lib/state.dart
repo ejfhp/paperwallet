@@ -1,4 +1,4 @@
-import 'arts.dart';
+import 'art.dart';
 import 'wallet.dart';
 import 'main.dart';
 import 'package:flutter/material.dart';
@@ -10,7 +10,7 @@ class BitPaperState extends State<BitPaper> {
 
   BitPaperState() {
     int initialWallets = 2;
-    getArts(this);
+    getArts(this, "./img");
     for (int i = 0; i < initialWallets; i++) {
       Wallet w = Wallet();
       wallets.add(w);
@@ -34,7 +34,6 @@ class BitPaperState extends State<BitPaper> {
 
   void addArt(String name, Art art) async {
     setState(() {
-      print("Adding Art: " + name);
       arts.putIfAbsent(name, () => art);
     });
   }
